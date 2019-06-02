@@ -1,4 +1,4 @@
-package com.jkm.findmyway.presenter
+package com.jkm.findmyway.auth
 
 import android.app.Activity
 import android.content.Intent
@@ -7,11 +7,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.jkm.findmyway.contract.AuthContract
 import com.jkm.findmyway.model.User
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
-class AuthPresenter(
+class AuthPresenter @Inject constructor(
     private val activity: WeakReference<Activity>,
     private val view: AuthContract.View
 ) : AuthContract.Presenter {

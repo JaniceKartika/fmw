@@ -1,4 +1,4 @@
-package com.jkm.findmyway.contract
+package com.jkm.findmyway.auth
 
 import android.content.Intent
 import com.jkm.findmyway.model.User
