@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jkm.findmyway">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <dist:module dist:instant="true"/>
 
     <application
@@ -16,12 +18,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".auth.AuthActivity">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
+        <activity
+            android:name=".map.MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".auth.AuthActivity"/>
 
     </application>
 </manifest>
