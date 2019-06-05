@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.SignInButton
 import com.jkm.findmyway.R
+import com.jkm.findmyway.databinding.ActivityAuthBinding
 import com.jkm.findmyway.model.User
-import kotlinx.android.synthetic.main.activity_auth.*
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 
@@ -17,9 +17,12 @@ class AuthActivity : AppCompatActivity(), AuthContract.View, View.OnClickListene
     @Inject
     lateinit var presenter: AuthPresenter
 
+    private lateinit var binding: ActivityAuthBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initViews()
 
         DaggerAuthComponent.builder()
@@ -53,7 +56,9 @@ class AuthActivity : AppCompatActivity(), AuthContract.View, View.OnClickListene
     }
 
     private fun initViews() {
-        btSignIn.setSize(SignInButton.SIZE_STANDARD)
-        btSignIn.setOnClickListener(this)
+        binding.apply {
+            btSignIn.setSize(SignInButton.SIZE_STANDARD)
+            btSignIn.setOnClickListener(this@AuthActivity)
+        }
     }
 }
